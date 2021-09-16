@@ -1,0 +1,16 @@
+@import '../Variabless.scss';
+
+/*------------------ *\
+|    Categories
+\*------------------*/
+.categories{
+  &__title {
+  background: $color-principal;
+  color: $color-claro;
+  font-size: 16px;
+  margin-top: -16px;
+  position: absolute;
+  padding-left: 30px;
+  width: 100%;
+  }
+}

@@ -1,0 +1,23 @@
+@import '../Variabless.scss';
+/*------------------ *\
+|    Footer
+\*------------------*/
+.footer {
+  align-items     : center;
+  background-color: $color-principal;
+  display         : flex;
+  height          : 100px;
+  width           : 100%;
+
+  a {
+    color          : $color-claro;
+    cursor         : pointer;
+    font-size      : 14px;
+    padding-left   : 30px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
