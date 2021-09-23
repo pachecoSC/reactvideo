@@ -1,7 +1,9 @@
 @media only screen and (max-width: 600px) {
   .main {
-    &__description &--title {
-      font-size: 30px;
+    &__description {
+      &--title {
+        font-size: 30px;
+      }
     }
   }
 
