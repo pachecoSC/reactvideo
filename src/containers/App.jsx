@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react'
 
 import config from '../../config'
@@ -34,26 +35,26 @@ const App = () => {
     <div className='App'>
       <Header />
       <Search />
-      <Categories tittle='Mi lista'>
-        <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-        </Carousel>
-      </Categories>
+      {videos.mylist?.length > 0 && (
+        <Categories tittle='Mi lista'>
+          <Carousel>
+            <CarouselItem />
+          </Carousel>
+        </Categories>
+      )}
+
       <Categories tittle='Tendencia'>
         <Carousel>
-          <CarouselItem />
-          <CarouselItem />
+          {videos.trends?.map((item) => (
+            <CarouselItem key={item.id} {...item} />
+          ))}
         </Carousel>
       </Categories>
       <Categories tittle='Originales de video'>
         <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
+          {videos.originals?.map((item) => (
+            <CarouselItem key={item.id} {...item} />
+          ))}
         </Carousel>
       </Categories>
       <Footer />
