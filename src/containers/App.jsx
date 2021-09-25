@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import config from '../../config'
 import '../assets/styles/App.scss'
@@ -10,56 +10,61 @@ import Categories from '../components/Categories'
 import Carousel from '../components/Carousel'
 import CarouselItem from '../components/CarouselItem'
 import Footer from '../components/Footer'
-
+import useInitialState from '../hooks/useInitialState'
 // const API = 'http://localhost:3000/initialState';
 
 const App = () => {
-  const [videos, setVideos] = useState([])
-  //  ! useState necesita parametros
-  //  ! string      'texto'
-  //  ! int      0
-  //  ! objeto      []
+  const initialState = useInitialState(config.API_URL)
 
-  useEffect(() => {
-    fetch(config.API_URL)
-      .then((response) => response.json())
-      .then((data) => setVideos(data))
-  }, [])
-  //  ! useEffect recibe dos parametros
-  //  ! 1. - funcion a trabajar.
-  //  ! 2. - cuando se va a ejecutar, si no enviamos parametro seria un bucle infinito,si tiene un array vacio
-  //  ! [] esta función solo se ejecutará al montar o desmontar el componente.
-
-  console.log(videos)
+  // console.log(initialState)
   return (
     <div className='App'>
       <Header />
       <Search />
-      {videos.mylist?.length > 0 && (
-        <Categories tittle='Mi lista'>
-          <Carousel>
-            <CarouselItem />
-          </Carousel>
-        </Categories>
-      )}
-
-      <Categories tittle='Tendencia'>
-        <Carousel>
-          {videos.trends?.map((item) => (
-            <CarouselItem key={item.id} {...item} />
-          ))}
-        </Carousel>
-      </Categories>
-      <Categories tittle='Originales de video'>
-        <Carousel>
-          {videos.originals?.map((item) => (
-            <CarouselItem key={item.id} {...item} />
-          ))}
-        </Carousel>
-      </Categories>
+      {initialState &&
+        Object.keys(initialState).map(
+          (cat) => (
+            initialState[cat].length > 0 && (
+              <Categories tittle={cat} key={cat}>
+                <Carousel>
+                  {initialState[cat].map((item) => (
+                    <CarouselItem key={item.id} {...item} />
+                  ))}
+                </Carousel>
+              </Categories>
+            )),
+        )}
       <Footer />
     </div>
   )
 }
 
 export default App
+
+//  ! ejemplo de bindeo de las categorias
+// {initialState.mylist?.length > 0 && (
+//   <Categories tittle='Mi lista'>
+//     <Carousel>
+//       <CarouselItem />
+//     </Carousel>
+//   </Categories>
+// )}
+// {initialState.trends?.length > 0 && ( // pregunta si tiene datos. si-muestra, no-oculta
+//   <Categories tittle='Tendencia'>
+//     <Carousel>
+//       {/* bindear carouselItem */}
+//       {initialState.trends?.map((item) => (
+//         <CarouselItem key={item.id} {...item} />
+//       ))}
+//     </Carousel>
+//   </Categories>
+// )}
+// {initialState.originals?.length > 0 && (
+//   <Categories tittle='Originales de video'>
+//     <Carousel>
+//       {initialState.originals?.map((item) => (
+//         <CarouselItem key={item.id} {...item} />
+//       ))}
+//     </Carousel>
+//   </Categories>
+// )}
