@@ -5,13 +5,18 @@
 \*------------------*/
 .header {
   align-items    : center;
-  background     : $color-principal;
   color          : $color-claro;
   display        : flex;
   height         : 100px;
   justify-content: space-between;
   top            : 0px;
   width          : 100%;
+  &--login{
+    background-color: $color-secundario;
+  }
+  &--home {
+    background-color: $fuente-principal;
+  }
 
   &__img {
     margin-left: 30px;

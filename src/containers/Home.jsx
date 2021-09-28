@@ -13,13 +13,13 @@ import Footer from '../components/Footer'
 import useInitialState from '../hooks/useInitialState'
 // const API = 'http://localhost:3000/initialState';  //se trae en el componente config
 
-const App = () => {
+const Home = () => {
   const initialState = useInitialState(config.API_URL)
 
   // console.log(initialState)
   return (
     <div className='App'>
-      <Header />
+      <Header dest='home' />
       <Search />
       {initialState &&
         Object.keys(initialState).map(
@@ -39,7 +39,7 @@ const App = () => {
   )
 }
 
-export default App
+export default Home
 
 //  ! ejemplo de bindeo de las categorias
 // {initialState.mylist?.length > 0 && (
