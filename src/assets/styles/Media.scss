@@ -17,6 +17,16 @@
     }
   }
 
+  .register {
+    &__container {
+      background-color: transparent !important;
+      border          : none !important;
+      box-shadow      : none !important;
+      padding         : 0px !important;
+      width           : 100% !important;
+    }
+  }
+
   .footer {
     align-items   : flex-start;
     flex-direction: column;

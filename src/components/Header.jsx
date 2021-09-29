@@ -7,7 +7,7 @@ import userIcon from '../assets/images/user-icon.png'
 const Header = ({ dest }) => (
   <header className={`header header--${dest}`}>
     <img className='header__img' src={logo} alt='Platzi Video' />
-    {window.location.pathname !== '/login' && (
+    {window.location.pathname === '/' && (
       <div className='header__menu'>
         <div className='header__menu--profile'>
           <img src={userIcon} alt='' />
