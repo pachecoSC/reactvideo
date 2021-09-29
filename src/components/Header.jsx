@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import '../assets/styles/components/Headers.scss'
 import logo from '../assets/images/logo-platzi-video-BW2.png'
@@ -6,11 +7,13 @@ import userIcon from '../assets/images/user-icon.png'
 
 const Header = ({ dest }) => (
   <header className={`header header--${dest}`}>
-    <img className='header__img' src={logo} alt='Platzi Video' />
+    <Link to='/'>
+      <img className='header__img' src={logo} alt='Platzi Video' />
+    </Link>
     {window.location.pathname === '/' && (
       <div className='header__menu'>
         <div className='header__menu--profile'>
-          <img src={userIcon} alt='' />
+          <Link to='/login'><img src={userIcon} alt='' /></Link>
           <p>Perfil</p>
         </div>
         <ul>
