@@ -13,7 +13,7 @@ import Footer from '../components/Footer'
 // import useInitialState from '../hooks/useInitialState'
 // const API = 'http://localhost:3000/initialState';  //se trae en el componente config
 
-const Home = ({ myList, trends, originals }) => {
+const Home = ({ mylist, trends, originals }) => {
   // const initialState = useInitialState(config.API_URL)
   // eslint-disable-next-line no-use-before-define
   const categoriesTittle = Array.from(Object.keys(mapStateToProps(''))) //obtiene un array desde un objeto
@@ -22,10 +22,10 @@ const Home = ({ myList, trends, originals }) => {
   function SelectionCategory(key) {
     const res = { tittle: '', visible: '', componente: '' }
     switch (key) {
-      case 'myList':
+      case 'mylist':
         res.tittle = 'mi lista'
-        res.visible = myList?.length > 0
-        res.componente = myList?.map((item) => <CarouselItem key={item.id} {...item} />)
+        res.visible = mylist?.length > 0
+        res.componente = mylist?.map((item) => <CarouselItem key={item.id} {...item} />)
         break
       case 'trends':
         res.tittle = 'tendencias'
@@ -81,7 +81,7 @@ const Home = ({ myList, trends, originals }) => {
 
 const mapStateToProps = (state) => {
   return {
-    myList: state.myList,
+    mylist: state.mylist,
     trends: state.trends,
     originals: state.originals,
   }
