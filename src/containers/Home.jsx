@@ -25,7 +25,7 @@ const Home = ({ mylist, trends, originals }) => {
       case 'mylist':
         res.tittle = 'mi lista'
         res.visible = mylist?.length > 0
-        res.componente = mylist?.map((item) => <CarouselItem key={item.id} {...item} />)
+        res.componente = mylist?.map((item) => <CarouselItem key={item.id} {...item} isList />)
         break
       case 'trends':
         res.tittle = 'tendencias'
