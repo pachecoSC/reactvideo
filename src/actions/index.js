@@ -10,4 +10,8 @@ export const deleteFavorite = (payload) => ({
   payload,
 })
 
+export const loginRequest = (payload) => ({
+  type: config.ACTIONS_TYPE.LOGIN,
+  payload,
+})
 // export default setFavorite

@@ -4,5 +4,6 @@ module.exports = {
   ACTIONS_TYPE: {
     SET: 'SET_FAVORITE',
     DELETE: 'DELETE_FAVORITE',
+    LOGIN: 'LOGIN_REQUEST',
   },
 }

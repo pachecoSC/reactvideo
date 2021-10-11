@@ -1,12 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loginRequest } from '../actions'
 import '../assets/styles/components/LoginForm.scss'
 //importacion de imagenes
 import GoogleIcon from '../assets/images/google-icon.png'
 import TwitterIcon from '../assets/images/twitter-icon.png'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  // const { history } = props
+
   const [form, setValues] = useState({
     email: '',
   })
@@ -21,7 +25,10 @@ const LoginForm = () => {
 
   const submitLoginButton = (e) => {
     e.preventDefault() // evita que se envien los parametros por la url
-    console.log(form)
+    // console.log(form)
+    props.loginRequest(form)
+    console.log('props', props.state)
+    props.history.push('/')
   }
 
   return (
@@ -57,7 +64,6 @@ const LoginForm = () => {
         <section className='login__container--social-media'>
           <div>
             <img src={GoogleIcon} alt='google' />
-            {' '}
             Inicia sesión con Google
           </div>
           <div>
@@ -74,4 +80,9 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+const mapDispatchToProps = {
+  loginRequest,
+}
+
+// export default LoginForm
+export default withRouter(connect(null, mapDispatchToProps)(LoginForm))

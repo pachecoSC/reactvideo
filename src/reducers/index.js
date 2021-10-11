@@ -22,6 +22,13 @@ const reducer = (state, action) => {
         mylist: state.mylist.filter((x) => x.id !== action.payload),
       }
 
+    case config.ACTIONS_TYPE.LOGIN:
+      console.log('payload', action.payload)
+      return {
+        ...state,
+        users: action.payload,
+      }
+
     default:
       return state
   }

@@ -13,7 +13,7 @@ import Footer from '../components/Footer'
 // import useInitialState from '../hooks/useInitialState'
 // const API = 'http://localhost:3000/initialState';  //se trae en el componente config
 
-const Home = ({ mylist, trends, originals }) => {
+const Home = ({ mylist, trends, originals, users }) => {
   // const initialState = useInitialState(config.API_URL)
   // eslint-disable-next-line no-use-before-define
   const categoriesTittle = Array.from(Object.keys(mapStateToProps(''))) //obtiene un array desde un objeto
@@ -63,7 +63,7 @@ const Home = ({ mylist, trends, originals }) => {
   // ! commit 461f6787eacb40441264af10fe2c3c993a50cbd2 -- codigo funciona con el hook useInitialState
   return (
     <div className='App'>
-      <Header dest='home' />
+      <Header dest='home' perfil={users.email} />
       <Search />
       {categoriesTittle.map(
         (cat) => categoriesTittle.length > 0 && (
@@ -84,6 +84,7 @@ const mapStateToProps = (state) => {
     mylist: state.mylist,
     trends: state.trends,
     originals: state.originals,
+    users: state.users,
   }
 }
 

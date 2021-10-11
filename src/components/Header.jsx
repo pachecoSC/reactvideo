@@ -5,7 +5,7 @@ import '../assets/styles/components/Headers.scss'
 import logo from '../assets/images/logo-platzi-video-BW2.png'
 import userIcon from '../assets/images/user-icon.png'
 
-const Header = ({ dest }) => (
+const Header = ({ dest, perfil }) => (
   <header className={`header header--${dest}`}>
     <Link to='/'>
       <img className='header__img' src={logo} alt='Platzi Video' />
@@ -14,7 +14,7 @@ const Header = ({ dest }) => (
       <div className='header__menu'>
         <div className='header__menu--profile'>
           <Link to='/login'><img src={userIcon} alt='' /></Link>
-          <p>Perfil</p>
+          <p>{(perfil !== undefined) ? perfil : 'Invitado' }</p>
         </div>
         <ul>
           <li>
