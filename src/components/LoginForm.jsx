@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { loginRequest } from '../actions'
 import '../assets/styles/components/LoginForm.scss'
 //importacion de imagenes
@@ -10,6 +11,7 @@ import TwitterIcon from '../assets/images/twitter-icon.png'
 
 const LoginForm = (props) => {
   // const { history } = props
+  const { email, password } = props
 
   const [form, setValues] = useState({
     email: '',
@@ -27,7 +29,7 @@ const LoginForm = (props) => {
     e.preventDefault() // evita que se envien los parametros por la url
     // console.log(form)
     props.loginRequest(form)
-    console.log('props', props.state)
+    // console.log('props', props.state)
     props.history.push('/')
   }
 
@@ -42,6 +44,7 @@ const LoginForm = (props) => {
             type='text'
             placeholder='Correo'
             onChange={handleInput}
+            value={email}
           />
           <input
             name='password'
@@ -49,6 +52,7 @@ const LoginForm = (props) => {
             type='password'
             placeholder='Contraseña'
             onChange={handleInput}
+            value={password}
           />
           <button type='submit' className='button'>
             Iniciar sesión
@@ -78,6 +82,11 @@ const LoginForm = (props) => {
       </section>
     </section>
   )
+}
+
+LoginForm.propTypes = {
+  email: PropTypes.string,
+  password: PropTypes.string,
 }
 
 const mapDispatchToProps = {

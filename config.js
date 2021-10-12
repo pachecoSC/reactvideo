@@ -5,6 +5,7 @@ module.exports = {
     SET: 'SET_FAVORITE',
     DELETE: 'DELETE_FAVORITE',
     LOGIN: 'LOGIN_REQUEST',
+    LOGOUT: 'LOGOUT_REQUEST',
   },
 
   GRAVATAR: {

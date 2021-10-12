@@ -23,7 +23,12 @@ const reducer = (state, action) => {
       }
 
     case config.ACTIONS_TYPE.LOGIN:
-      console.log('payload', action.payload)
+      // console.log('payload', action.payload)
+      return {
+        ...state,
+        users: action.payload,
+      }
+    case config.ACTIONS_TYPE.LOGOUT:
       return {
         ...state,
         users: action.payload,
