@@ -18,7 +18,7 @@ const Header = (props) => {
 
   const hasUser = Object.keys(users).length > 0 // ya que users es un objeto se usa object.keys para tratarlo como un array y poder obtener su tamaño
   // console.log(hasUser)
-  const perfil = hasUser ? users.email : 'Invitado'
+  const perfil = (!hasUser) ? 'Invitado' : (users.name !== undefined) ? users.name : 'dummi'
   return (
     <header className={`header header--${dest}`}>
       <Link to='/'>
