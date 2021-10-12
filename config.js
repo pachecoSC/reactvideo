@@ -6,4 +6,8 @@ module.exports = {
     DELETE: 'DELETE_FAVORITE',
     LOGIN: 'LOGIN_REQUEST',
   },
+
+  GRAVATAR: {
+    URL: 'https://gravatar.com/avatar/',
+  },
 }
