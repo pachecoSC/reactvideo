@@ -3,8 +3,11 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { getVideoSource } from '../actions'
-import '../assets/styles/components/player.scss'
+import '../assets/styles/App.scss'
+import '../assets/styles/components/Player.scss'
 import NotFound from './NotFound'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const Player = (props) => {
   const { id } = props.match.params
@@ -16,14 +19,18 @@ const Player = (props) => {
   }, []);
 
   return !hasPlaying ? <NotFound /> : (
-    <div className='Player'>
-      <video controls autoPlay>
-        <source src={playing.source} type='video/mp4' />
-        Tu navegador no soporta el video
-      </video>
-      <div className='Player-back'>
-        <button type='button' onClick={() => props.history.goBack()}>Regresar</button>
+    <div className='App'>
+      <Header dest='home' />
+      <div className='Player'>
+        <video controls autoPlay>
+          <source src={playing.source} type='video/mp4' />
+          Tu navegador no soporta el video
+        </video>
+        <div className='Player-back'>
+          <button type='button' onClick={() => props.history.goBack()}>Regresar</button>
+        </div>
       </div>
+      <Footer />
     </div>
   )
 }

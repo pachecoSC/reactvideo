@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, compose } from 'redux'
 
 // import HolaMundo from './components/HolaMundo'
 import reducer from './reducers'
@@ -173,7 +173,9 @@ const InitialState = {
   ],
 }
 
-const store = createStore(reducer, InitialState)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const store = createStore(reducer, InitialState, composeEnhancers())
 
 // ReactDOM.render(<HolaMundo />, document.getElementById('app'));
 ReactDOM.render(
